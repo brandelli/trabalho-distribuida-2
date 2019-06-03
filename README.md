@@ -1,1 +1,12 @@
-# trabalho-distribuida-2
+![enunciado1](./img/img-01.jpg)
+![enunciado2](./img/img-02.jpg)
+![enunciado3](./img/img-03.jpg)
+![enunciado4](./img/img-04.jpg)
+![enunciado5](./img/img-05.jpg)
+![enunciado6](./img/img-06.jpg)
+![enunciado7](./img/img-07.jpg)
+![enunciado8](./img/img-08.jpg)
+![enunciado9](./img/img-09.jpg)
+![enunciado10](./img/img-10.jpg)
+![enunciado11](./img/img-11.jpg)
+![enunciado12](./img/img-12.jpg)
