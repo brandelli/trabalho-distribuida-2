@@ -32,7 +32,7 @@ public class SpeculateWS {
     
     @WebMethod(operationName = "registraJogador")
     public int registraJogador(@WebParam(name = "name") String name) {
-        return 0;
+        return 10;
     }
     
     @WebMethod(operationName = "encerraPartida")
