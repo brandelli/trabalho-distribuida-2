@@ -12,6 +12,7 @@ public class Partida {
 	private Jogador vencedor = null;
 	private Boolean desistencia = false;
 	private Tabuleiro tabuleiro = null;
+        private Dado dado = null;
 	private int id;
 	private Boolean partidaTerminada = false;
 	private int jogadas = 0;
@@ -80,10 +81,14 @@ public class Partida {
 	public void criaTabuleiro() {
 		this.tabuleiro = new Tabuleiro();
 	}
+        
+        public void criaDado(){
+            this.dado = new Dado(this.getJogador1().getId(), this.getJogador2().getId());
+        }
 	
 	public int jogaDados() {
-		int dado = Dado.jogaDado();
-		boolean efeito = this.tabuleiro.recebeJogada(dado);
+		int valorDado = dado.jogaDado();
+		boolean efeito = this.tabuleiro.recebeJogada(valorDado);
 		// verifica o efeito da jogada no tabuleiro
 		// true -> jogador recebe uma bola, porque a casa j� estava ocupada
 		if(efeito) {
@@ -94,7 +99,7 @@ public class Partida {
 		}
 		this.jogadas--;
 		this.verificaFimTurno();
-		return dado;
+		return valorDado;
 	}
 	
 	public int getId() {
