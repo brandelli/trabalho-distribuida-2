@@ -43,24 +43,6 @@
                         <id>wsimport-generate-SpeculateWS</id>
                         <phase>generate-sources</phase>
                     </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>localhost_8080/SpeculateWebService/SpeculateWS.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName>com.mycompany.speculateclient</packageName>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <wsdlLocation>http://localhost:8080/SpeculateWebService/SpeculateWS?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/SpeculateWS_1.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-SpeculateWS_1</id>
-                        <phase>generate-sources</phase>
-                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

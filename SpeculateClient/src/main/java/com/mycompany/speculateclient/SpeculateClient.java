@@ -68,8 +68,14 @@ public class SpeculateClient {
                     case 0:
                         if (param.length!=4)
                             erro(inFile,i+1);
-                        else
-                            out.println(port.preRegistro(param[0],Integer.parseInt(param[1]),param[2],Integer.parseInt(param[3])));
+                        else{
+                            String p1 = param[0];
+                            int p1ID = Integer.parseInt(param[1]);
+                            String p2 = param[2];
+                            int p2ID = Integer.parseInt(param[3]);
+                            out.println(port.preRegistro(p1, p1ID, p2, p2ID));
+                        }
+                            
                         break;
                     case 1:
                         if (param.length!=1)

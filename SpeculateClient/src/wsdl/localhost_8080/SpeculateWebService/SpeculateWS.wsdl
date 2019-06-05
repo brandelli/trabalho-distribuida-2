@@ -4,17 +4,35 @@
 <xsd:import namespace="http://speculatewebservice.mycompany.com/" schemaLocation="http://localhost:8080/SpeculateWebService/SpeculateWS?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
+<message name="obtemNumBolasOponente">
+<part name="parameters" element="tns:obtemNumBolasOponente"/>
 </message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
+<message name="obtemNumBolasOponenteResponse">
+<part name="parameters" element="tns:obtemNumBolasOponenteResponse"/>
 </message>
-<message name="encerraPartida">
-<part name="parameters" element="tns:encerraPartida"/>
+<message name="obtemTabuleiro">
+<part name="parameters" element="tns:obtemTabuleiro"/>
 </message>
-<message name="encerraPartidaResponse">
-<part name="parameters" element="tns:encerraPartidaResponse"/>
+<message name="obtemTabuleiroResponse">
+<part name="parameters" element="tns:obtemTabuleiroResponse"/>
+</message>
+<message name="preRegistro">
+<part name="parameters" element="tns:preRegistro"/>
+</message>
+<message name="preRegistroResponse">
+<part name="parameters" element="tns:preRegistroResponse"/>
+</message>
+<message name="obtemNumBolas">
+<part name="parameters" element="tns:obtemNumBolas"/>
+</message>
+<message name="obtemNumBolasResponse">
+<part name="parameters" element="tns:obtemNumBolasResponse"/>
+</message>
+<message name="ehMinhaVez">
+<part name="parameters" element="tns:ehMinhaVez"/>
+</message>
+<message name="ehMinhaVezResponse">
+<part name="parameters" element="tns:ehMinhaVezResponse"/>
 </message>
 <message name="temPartida">
 <part name="parameters" element="tns:temPartida"/>
@@ -28,29 +46,11 @@
 <message name="obtemOponenteResponse">
 <part name="parameters" element="tns:obtemOponenteResponse"/>
 </message>
-<message name="ehMinhaVez">
-<part name="parameters" element="tns:ehMinhaVez"/>
+<message name="registraJogador">
+<part name="parameters" element="tns:registraJogador"/>
 </message>
-<message name="ehMinhaVezResponse">
-<part name="parameters" element="tns:ehMinhaVezResponse"/>
-</message>
-<message name="obtemNumBolas">
-<part name="parameters" element="tns:obtemNumBolas"/>
-</message>
-<message name="obtemNumBolasResponse">
-<part name="parameters" element="tns:obtemNumBolasResponse"/>
-</message>
-<message name="obtemNumBolasOponente">
-<part name="parameters" element="tns:obtemNumBolasOponente"/>
-</message>
-<message name="obtemNumBolasOponenteResponse">
-<part name="parameters" element="tns:obtemNumBolasOponenteResponse"/>
-</message>
-<message name="obtemTabuleiro">
-<part name="parameters" element="tns:obtemTabuleiro"/>
-</message>
-<message name="obtemTabuleiroResponse">
-<part name="parameters" element="tns:obtemTabuleiroResponse"/>
+<message name="registraJogadorResponse">
+<part name="parameters" element="tns:registraJogadorResponse"/>
 </message>
 <message name="defineJogadas">
 <part name="parameters" element="tns:defineJogadas"/>
@@ -64,26 +64,32 @@
 <message name="jogaDadoResponse">
 <part name="parameters" element="tns:jogaDadoResponse"/>
 </message>
-<message name="preRegistro">
-<part name="parameters" element="tns:preRegistro"/>
+<message name="encerraPartida">
+<part name="parameters" element="tns:encerraPartida"/>
 </message>
-<message name="preRegistroResponse">
-<part name="parameters" element="tns:preRegistroResponse"/>
-</message>
-<message name="registraJogador">
-<part name="parameters" element="tns:registraJogador"/>
-</message>
-<message name="registraJogadorResponse">
-<part name="parameters" element="tns:registraJogadorResponse"/>
+<message name="encerraPartidaResponse">
+<part name="parameters" element="tns:encerraPartidaResponse"/>
 </message>
 <portType name="SpeculateWS">
-<operation name="hello">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/helloResponse" message="tns:helloResponse"/>
+<operation name="obtemNumBolasOponente">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasOponenteRequest" message="tns:obtemNumBolasOponente"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasOponenteResponse" message="tns:obtemNumBolasOponenteResponse"/>
 </operation>
-<operation name="encerraPartida">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/encerraPartidaRequest" message="tns:encerraPartida"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/encerraPartidaResponse" message="tns:encerraPartidaResponse"/>
+<operation name="obtemTabuleiro">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemTabuleiroRequest" message="tns:obtemTabuleiro"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemTabuleiroResponse" message="tns:obtemTabuleiroResponse"/>
+</operation>
+<operation name="preRegistro">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/preRegistroRequest" message="tns:preRegistro"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/preRegistroResponse" message="tns:preRegistroResponse"/>
+</operation>
+<operation name="obtemNumBolas">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasRequest" message="tns:obtemNumBolas"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasResponse" message="tns:obtemNumBolasResponse"/>
+</operation>
+<operation name="ehMinhaVez">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/ehMinhaVezRequest" message="tns:ehMinhaVez"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/ehMinhaVezResponse" message="tns:ehMinhaVezResponse"/>
 </operation>
 <operation name="temPartida">
 <input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/temPartidaRequest" message="tns:temPartida"/>
@@ -93,21 +99,9 @@
 <input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemOponenteRequest" message="tns:obtemOponente"/>
 <output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemOponenteResponse" message="tns:obtemOponenteResponse"/>
 </operation>
-<operation name="ehMinhaVez">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/ehMinhaVezRequest" message="tns:ehMinhaVez"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/ehMinhaVezResponse" message="tns:ehMinhaVezResponse"/>
-</operation>
-<operation name="obtemNumBolas">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasRequest" message="tns:obtemNumBolas"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasResponse" message="tns:obtemNumBolasResponse"/>
-</operation>
-<operation name="obtemNumBolasOponente">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasOponenteRequest" message="tns:obtemNumBolasOponente"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemNumBolasOponenteResponse" message="tns:obtemNumBolasOponenteResponse"/>
-</operation>
-<operation name="obtemTabuleiro">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemTabuleiroRequest" message="tns:obtemTabuleiro"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/obtemTabuleiroResponse" message="tns:obtemTabuleiroResponse"/>
+<operation name="registraJogador">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/registraJogadorRequest" message="tns:registraJogador"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/registraJogadorResponse" message="tns:registraJogadorResponse"/>
 </operation>
 <operation name="defineJogadas">
 <input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/defineJogadasRequest" message="tns:defineJogadas"/>
@@ -117,18 +111,14 @@
 <input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/jogaDadoRequest" message="tns:jogaDado"/>
 <output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/jogaDadoResponse" message="tns:jogaDadoResponse"/>
 </operation>
-<operation name="preRegistro">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/preRegistroRequest" message="tns:preRegistro"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/preRegistroResponse" message="tns:preRegistroResponse"/>
-</operation>
-<operation name="registraJogador">
-<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/registraJogadorRequest" message="tns:registraJogador"/>
-<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/registraJogadorResponse" message="tns:registraJogadorResponse"/>
+<operation name="encerraPartida">
+<input wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/encerraPartidaRequest" message="tns:encerraPartida"/>
+<output wsam:Action="http://speculatewebservice.mycompany.com/SpeculateWS/encerraPartidaResponse" message="tns:encerraPartidaResponse"/>
 </operation>
 </portType>
 <binding name="SpeculateWSPortBinding" type="tns:SpeculateWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="hello">
+<operation name="obtemNumBolasOponente">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -137,7 +127,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="encerraPartida">
+<operation name="obtemTabuleiro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="preRegistro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="obtemNumBolas">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ehMinhaVez">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -164,34 +181,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="ehMinhaVez">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="obtemNumBolas">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="obtemNumBolasOponente">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="obtemTabuleiro">
+<operation name="registraJogador">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -218,16 +208,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="preRegistro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="registraJogador">
+<operation name="encerraPartida">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
