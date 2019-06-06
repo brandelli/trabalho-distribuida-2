@@ -31,23 +31,22 @@ public class SpeculateWS {
     private static Semaphore semaforo = new Semaphore(1);
     private static int partidaID = 0;
     
-    private Partida getPartida(int id) {
+    private synchronized Partida getPartida(int id) {
 	return dictPartidas.get(id);
     }
     
     @WebMethod(operationName = "preRegistro")
-    public int preRegistro(@WebParam(name = "p1Name") String p1Name, @WebParam(name = "p1ID") int p1ID,
+    public synchronized int preRegistro(@WebParam(name = "p1Name") String p1Name, @WebParam(name = "p1ID") int p1ID,
             @WebParam(name = "p2Name") String p2Name, @WebParam(name = "p2ID") int p2ID) {
         preRegistro.put(p1Name, p1ID);
-        preRegistro.put(p1Name, p2ID);
+        preRegistro.put(p2Name, p2ID);
         return 0;
     }
     
     @WebMethod(operationName = "registraJogador")
-    public int registraJogador(@WebParam(name = "name") String name) {
+    public synchronized int registraJogador(@WebParam(name = "name") String name) {
         int codigoDeRetorno = 0;
-        try {
-                semaforo.acquire();
+        
                 //caso o jogador j� esteja cadastrado
                 if(jogadoresRegistrados.containsKey(name)) {
                         codigoDeRetorno = -1;
@@ -81,17 +80,11 @@ public class SpeculateWS {
                         }
                         codigoDeRetorno = id;
                 }
-        } catch(Exception e) {
-                System.out.println("Erro em registraJogador");
-                e.printStackTrace();
-        } finally {
-                semaforo.release();
-        }
         return codigoDeRetorno;
     }
     
     @WebMethod(operationName = "encerraPartida")
-    public int encerraPartida(@WebParam(name = "id") int id) {
+    public synchronized int encerraPartida(@WebParam(name = "id") int id) {
         int codigoDeRetorno = -1;
         try {
                 semaforo.acquire();
@@ -133,7 +126,7 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "temPartida")
-    public int temPartida(@WebParam(name = "id") int id) {
+    public synchronized int temPartida(@WebParam(name = "id") int id) {
         Partida partida = this.getPartida(id);
         if(partida == null) {
                 return -1;
@@ -158,12 +151,17 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "obtemOponente")
-    public String obtemOponente(@WebParam(name = "id") int id) {
+    public synchronized String obtemOponente(@WebParam(name = "id") int id) {
         Partida partida = this.getPartida(id);
+        System.out.println("ID da partida" + id);
         if(partida != null) {
                 Jogador jogador1 = partida.getJogador1();
                 Jogador jogador2 = partida.getJogador2();
-
+                
+                if(jogador1 == null){
+                    return "";
+                }
+                
                 if(jogador1.getId() == id) {
                         if(jogador2 != null) {
                                 return jogador2.getNome();
@@ -176,7 +174,7 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "ehMinhaVez")
-    public int ehMinhaVez(@WebParam(name = "id") int id) {
+    public synchronized int ehMinhaVez(@WebParam(name = "id") int id) {
         Partida partida = this.getPartida(id);
 		
         // jogador n�o encontrado em nunhuma partida
@@ -219,7 +217,7 @@ public class SpeculateWS {
         }
     }
     
-    private int obtemBolasDoJogador(int id, Boolean minhasBolas) {
+    private synchronized int obtemBolasDoJogador(int id, Boolean minhasBolas) {
         Partida partida = this.getPartida(id);
         // caso o jogador n�o esteja em nenhuma partida
         if(partida == null) {
@@ -251,17 +249,17 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "obtemNumBolas")
-    public int obtemNumBolas(@WebParam(name = "id") int id) {
+    public synchronized int obtemNumBolas(@WebParam(name = "id") int id) {
         return this.obtemBolasDoJogador(id, true);
     }
     
     @WebMethod(operationName = "obtemNumBolasOponente")
-    public int obtemNumBolasOponente(@WebParam(name = "id") int id) {
+    public synchronized int obtemNumBolasOponente(@WebParam(name = "id") int id) {
         return this.obtemBolasDoJogador(id, false);
     }
     
     @WebMethod(operationName = "obtemTabuleiro")
-    public String obtemTabuleiro(@WebParam(name = "id") int id) {
+    public synchronized String obtemTabuleiro(@WebParam(name = "id") int id) {
         Partida partida = this.getPartida(id);
         if(partida == null || partida.getTabuleiro() == null)
                 return "";
@@ -270,11 +268,11 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "defineJogadas")
-    public int defineJogadas(@WebParam(name = "id") int id, @WebParam(name = "jogadas") int jogadas) {
+    public synchronized int defineJogadas(@WebParam(name = "id") int id, @WebParam(name = "jogadas") int jogadas) {
         Partida partida = this.getPartida(id);
 
         //caso n�o tenha partida
-        if(partida == null) {
+        if(partida == null || partida.getJogador1() == null) {
                 return -2;
         }
 
@@ -313,11 +311,11 @@ public class SpeculateWS {
     }
     
     @WebMethod(operationName = "jogaDado")
-    public int jogaDado(@WebParam(name = "id") int id) {
+    public synchronized int jogaDado(@WebParam(name = "id") int id) {
         Partida partida = this.getPartida(id);
 
         // caso ainda n�o tenha partida
-        if(partida == null) {
+        if(partida == null || partida.getJogador1() == null) {
                 return -2;
         }
 
