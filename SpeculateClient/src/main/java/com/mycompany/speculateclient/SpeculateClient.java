@@ -20,7 +20,7 @@ public class SpeculateClient {
     public static void main(String[] args) throws IOException{
         com.mycompany.speculatewebservice.SpeculateWS_Service service = new com.mycompany.speculatewebservice.SpeculateWS_Service();
         port = service.getSpeculateWSPort();
-        executaTeste("Speculate-0000",false);
+        executaTeste("Speculate-2000",false);
     }
     
     private static void executaTesteParalelo(String[] rad) throws IOException {
