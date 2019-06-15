@@ -20,8 +20,23 @@ public class SpeculateClient {
     public static void main(String[] args) throws IOException{
         com.mycompany.speculatewebservice.SpeculateWS_Service service = new com.mycompany.speculatewebservice.SpeculateWS_Service();
         port = service.getSpeculateWSPort();
-
-        executaTeste("Speculate-2000",false);
+        
+        //executaTeste("Speculate-0000",false);
+        //2.7s
+        
+        //executaTeste("Speculate-1000",false);
+        //1min43s
+        
+        executaTeste("Speculate-3000",false);
+        //1min38s
+        
+        //String[] testePar1 = {"Speculate-2000","Speculate-2250","Speculate-2500","Speculate-2750"};
+        //executaTesteParalelo(testePar1);
+        //43s
+        
+        //String[] testePar2 = {"Speculate-4000","Speculate-4250","Speculate-4500","Speculate-4750"};
+        //executaTesteParalelo(testePar2);
+        // 42s
 
     }
     

@@ -42,7 +42,8 @@ public class SpeculateWS {
         Jogador jogador1 = new Jogador(p1ID, p1Name);
         Jogador jogador2 = new Jogador(p2ID, p2Name);
         Jogador[] jogador1Data = {jogador1, jogador2};
-        Jogador[] jogador2Data = {jogador2, jogador1}; 
+        Jogador[] jogador2Data = {jogador2, jogador1};
+        System.out.println("Pré registrando jogadores: "+p1Name+" e " + p2Name);
         preRegistro.put(p1Name, jogador1Data);
         preRegistro.put(p2Name, jogador2Data);
         return 0;
@@ -82,6 +83,7 @@ public class SpeculateWS {
                     dictPartidas.put(jogador2.getId(), partida);
                     jogadoresRegistrados.put(jogador1.getNome(), jogador1);
                     jogadoresRegistrados.put(jogador2.getNome(), jogador2);
+                    System.out.println("Partida Registrada entre: " + jogador1.getNome() + " e " + jogador2.getNome());
                 }
                 codigoDeRetorno = id;
 
@@ -112,6 +114,7 @@ public class SpeculateWS {
                 } else {
                         // caso um jogador j� tenha encerrado a sua sess�o, os requicios da partida s�o limpos
                         if(partida.getPartidaTerminada()) {
+                                System.out.println("Partida encerrada entre: " + partida.getJogador1().getNome() + " e " + partida.getJogador2().getNome());
                                 partidasRegistradas.remove(partida.getId());
                                 
                         // caso contrario, o primeiro cliente a fechar a partida indica na classe partida
